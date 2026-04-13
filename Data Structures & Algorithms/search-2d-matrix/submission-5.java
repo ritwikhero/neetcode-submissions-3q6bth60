@@ -1,0 +1,25 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+       int m = matrix.length, n = matrix[0].length;
+       //flatening the list in our mind
+       int left = 0, right =  m*n-1; //last element if flatted
+
+       while(left <= right){
+        int mid = left + (right-left)/2;
+
+        //using this cause get the location of the mid element
+        int row = mid/n, col = mid%n;
+
+        if(matrix[row][col] == target){
+            return true;
+        }
+        else if(matrix[row][col] > target){
+            right = mid-1;
+        }
+        else{
+            left = mid+1;
+        }
+       }
+       return false;
+    }
+}
